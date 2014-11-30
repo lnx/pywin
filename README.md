@@ -1,14 +1,14 @@
-# Windows Python Version Management: pywin
+## Windows Python Version Management: pywin
 
 Pywin will auto-detect the pythons on your windows and let you easily switch between them. It's simple and unobtrusive.
 
-# How to use
+## How to use
 
 Download [pywin](https://raw.github.com/lnx/pywin/master/dist/pywin.exe) and execute it!
 
 ![ScreenShot](https://raw.github.com/lnx/pywin/master/demo/usage.png)
 
-# The MIT License (MIT)
+## The MIT License (MIT)
 
 Copyright © 2014 [Long Zhao, http://blog.codinghonor.com](http://blog.codinghonor.com)
 
