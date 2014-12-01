@@ -35,7 +35,7 @@ public class PyWin {
 				choice = getChoice(scanner);
 			}
 			scanner.close();
-			update(pythons.get(choice));
+			update(pythons, choice);
 			Windows.notifyToChange();
 			System.out.println(String.format(
 					"\nGreat job! The environment has been switched to '%s'. Before using it, please restart your terminal.\n\nGood luck!\n",
@@ -60,12 +60,16 @@ public class PyWin {
 		return ret;
 	}
 
-	static void update(String python) {
+	static void update(List<String> pythons, int choice) {
 		String path = Registry.query(REG_KEY_ENV, REG_VAL_PATH);
 		if (path == null) {
 			path = "";
+		} else {
+			for (String python : pythons) {
+				path = path.replaceAll(String.format("%s(\\Scripts)?;", python).replaceAll("\\\\", "\\\\\\\\"), "");
+			}
 		}
-		Registry.add(REG_KEY_ENV, REG_VAL_PATH, String.format("%s;%s\\Scripts;", python, python) + path.replaceAll("python(\\\\Scripts)?", ""));
+		Registry.add(REG_KEY_ENV, REG_VAL_PATH, String.format("%s;%s\\Scripts;%s", pythons.get(choice), pythons.get(choice), path));
 	}
 
 	public static void main(String[] args) {
